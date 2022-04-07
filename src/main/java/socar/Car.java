@@ -37,9 +37,9 @@ public class Car  {
         BeanUtils.copyProperties(this, carReserved);
         carReserved.publishAfterCommit();
 
-        RoomCancelled roomCancelled = new RoomCancelled();
-        BeanUtils.copyProperties(this, roomCancelled);
-        roomCancelled.publishAfterCommit();
+        CarCancelled carCancelled = new CarCancelled();
+        BeanUtils.copyProperties(this, carCancelled);
+        carCancelled.publishAfterCommit();
 
     }
     @PrePersist

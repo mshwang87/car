@@ -5,7 +5,6 @@ public class CarRegistered extends AbstractEvent {
 
     private Long carId;
     private String status;
-    private String desc;
     private String amount;
     private String carName;
     private String carType;
@@ -27,13 +26,6 @@ public class CarRegistered extends AbstractEvent {
 
     public void setStatus(String Status) {
         this.status = status;
-    }
-    public String getDesc() {
-        return desc;
-    }
-
-    public void setDesc(String Desc) {
-        this.desc = desc;
     }
     public String getAmount() {
         return amount;

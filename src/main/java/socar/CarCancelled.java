@@ -1,7 +1,7 @@
 package socar;
 
 
-public class RoomCancelled extends AbstractEvent {
+public class CarCancelled extends AbstractEvent {
 
     private Long carId;
     private String status;
@@ -9,7 +9,7 @@ public class RoomCancelled extends AbstractEvent {
     private String carName;
     private String carType;
 
-    public RoomCancelled(){
+    public CarCancelled(){
         super();
     }
 
