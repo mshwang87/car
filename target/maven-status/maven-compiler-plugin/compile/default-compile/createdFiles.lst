@@ -1,0 +1,14 @@
+socar/AbstractEvent.class
+socar/ReservationCancelled.class
+socar/AbstractEvent$1.class
+socar/Car.class
+socar/config/kafka/KafkaProcessor.class
+socar/CarDeleted.class
+socar/CarRepository.class
+socar/CarReserved.class
+socar/CarController.class
+socar/CarRegistered.class
+socar/CarModified.class
+socar/PolicyHandler.class
+socar/CarApplication.class
+socar/ReservationConfirmed.class
