@@ -9,6 +9,8 @@ import java.util.List;
 @Table(name="Car_table")
 public class Car  {
 
+    @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
     private Long carId;
 
     private String status;
