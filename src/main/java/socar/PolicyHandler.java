@@ -20,7 +20,7 @@ public class PolicyHandler{
 
         if(!reservationConfirmed.validate()) return;
 
-        System.out.println("\n\n##### listener ConfirmReserve : " + reservationConfirmed.toJson() + "\n\n");
+        System.out.println("\n\n##### 예약 확인 : " + reservationConfirmed.toJson() + "\n\n");
 
 
         
@@ -36,7 +36,7 @@ public class PolicyHandler{
 
         if(!reservationCancelled.validate()) return;
 
-        System.out.println("\n\n##### listener Cancel : " + reservationCancelled.toJson() + "\n\n");
+        System.out.println("\n\n##### 예약 취소 : " + reservationCancelled.toJson() + "\n\n");
 
 
         

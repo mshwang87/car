@@ -12,25 +12,26 @@ public class Car  {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Long carId;
-
     private String status;
-
     private String carName;
-
     private Long amount;
-
     private String carType;
-
 
     @PostPersist
     public void onPostPersist(){
+        // 차량 등록 
+        // 초기값 세팅 
+        status = "available";       // 최초 등록시 항상 이용가능
+
         CarRegistered carRegistered = new CarRegistered();
         BeanUtils.copyProperties(this, carRegistered);
         carRegistered.publishAfterCommit();
 
     }
+
     @PostUpdate
     public void onPostUpdate(){
+        // 차량 정보 수정 
         CarModified carModified = new CarModified();
         BeanUtils.copyProperties(this, carModified);
         carModified.publishAfterCommit();
@@ -52,6 +53,7 @@ public class Car  {
     }
     @PreRemove
     public void onPreRemove(){
+        // 차량 정보 삭제 
         CarDeleted carDeleted = new CarDeleted();
         BeanUtils.copyProperties(this, carDeleted);
         carDeleted.publishAfterCommit();
