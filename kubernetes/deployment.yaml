@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: car
+  namespace: socar
   labels:
     app: car
 spec:
@@ -16,7 +17,7 @@ spec:
     spec:
       containers:
         - name: car
-          image: username/car:latest
+          image: 979050235289.dkr.ecr.ap-southeast-2.amazonaws.com/user06-car:1.0
           ports:
             - containerPort: 8080
           readinessProbe:
