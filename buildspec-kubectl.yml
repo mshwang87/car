@@ -3,6 +3,7 @@ version: 0.2
 env:
   variables:
     _PROJECT_NAME: "user06-car"
+    _PRJ_NAMESPACE: "socar"
 
 phases:
   install:
@@ -44,7 +45,7 @@ phases:
           kind: Service
           metadata:
             name: $_PROJECT_NAME
-            namespace: socar
+            namespace: $_PRJ_NAMESPACE
             labels:
               app: $_PROJECT_NAME
           spec:
@@ -60,7 +61,7 @@ phases:
           kind: Deployment
           metadata:
             name: $_PROJECT_NAME
-            namespace: socar
+            namespace: $_PRJ_NAMESPACE
             labels:
               app: $_PROJECT_NAME
           spec:
