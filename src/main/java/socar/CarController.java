@@ -14,7 +14,7 @@ import java.util.Optional;
         @Autowired
         CarRepository carRepository;
 
-@RequestMapping(value = "/chkAndReqReserve",
+@RequestMapping(value = "/check/chkAndReqReserve",
         method = RequestMethod.GET,
         produces = "application/json;charset=UTF-8")
 
