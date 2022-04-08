@@ -2,7 +2,6 @@ package socar;
 
 import javax.persistence.*;
 import org.springframework.beans.BeanUtils;
-import java.util.List;
 
 
 @Entity
@@ -21,7 +20,8 @@ public class Car  {
     public void onPostPersist(){
         // 차량 등록 
         // 초기값 세팅 
-        status = "available";       // 최초 등록시 항상 이용가능
+        status = "available";    // 최초 등록시 항상 이용가능
+        carType = "register";    
 
         CarRegistered carRegistered = new CarRegistered();
         BeanUtils.copyProperties(this, carRegistered);
@@ -31,18 +31,27 @@ public class Car  {
 
     @PostUpdate
     public void onPostUpdate(){
+        System.out.println("carType : " + carType);
         // 차량 정보 수정 
-        CarModified carModified = new CarModified();
-        BeanUtils.copyProperties(this, carModified);
-        carModified.publishAfterCommit();
+        if(carType.equals("modify")) {
+            CarModified carModified = new CarModified();
+            BeanUtils.copyProperties(this, carModified);
+            carModified.publishAfterCommit();
+        }
 
-        CarReserved carReserved = new CarReserved();
-        BeanUtils.copyProperties(this, carReserved);
-        carReserved.publishAfterCommit();
+        // 차량 예약 
+        if(carType.equals("reserved")) {
+            CarReserved carReserved = new CarReserved();
+            BeanUtils.copyProperties(this, carReserved);
+            carReserved.publishAfterCommit();
+        }
 
-        CarCancelled carCancelled = new CarCancelled();
-        BeanUtils.copyProperties(this, carCancelled);
-        carCancelled.publishAfterCommit();
+        // 차량 예약취소  
+        if(carType.equals("cancelled")) {
+            CarCancelled carCancelled = new CarCancelled();
+            BeanUtils.copyProperties(this, carCancelled);
+            carCancelled.publishAfterCommit();
+        }
 
     }
     @PrePersist
