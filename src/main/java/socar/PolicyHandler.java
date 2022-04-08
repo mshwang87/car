@@ -23,17 +23,14 @@ public class PolicyHandler{
 
         if(!reservationConfirmed.validate()) return;
 
-        System.out.println("\n\n##### 예약 확인 : " + reservationConfirmed.toJson() + "\n\n");
+        System.out.println("\n\n##### 예약 확정: " + reservationConfirmed.toJson() + "\n\n");
 
 
-        long carId = reservationConfirmed.getCarId(); // 삭제된 리뷰의 carId
+        long carId = reservationConfirmed.getCarId(); 
 
-        updateRoomStatus(carId, "reserved", "reserved"); // Status Update
+        updateCarStatus(carId, "reserved", "reserved"); // Status Update
         
 
-        // Sample Logic //
-        // Car car = new Car();
-        // carRepository.save(car);
 
     }
 
@@ -46,15 +43,12 @@ public class PolicyHandler{
 
         long carId = reservationCancelled.getCarId(); // 예약취소한  CarID
 
-        updateRoomStatus(carId, "available", "cancelled"); // Status Update
+        updateCarStatus(carId, "available", "cancelled"); // Status Update
 
     }
 
-    private void updateRoomStatus(long carId, String status, String carType)     {
+    private void updateCarStatus(long carId, String status, String carType)     {
 
-        //////////////////////////////////////////////
-        // carId 룸 데이터의 status, lastAction 수정
-        //////////////////////////////////////////////
 
         // Car 테이블에서 carId의 Data 조회 -> car
         Optional<Car> res = carRepository.findById(carId);
@@ -64,7 +58,7 @@ public class PolicyHandler{
         System.out.println("status      : " + car.getStatus());
         System.out.println("carType  : " + car.getCarType());
 
-        // room 값 수정
+        // car 값 수정
         car.setStatus(status); // status 수정 
         car.setCarType(carType);  // lastAction 값 셋팅
 
